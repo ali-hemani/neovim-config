@@ -2,6 +2,8 @@ return {
   "neovim/nvim-lspconfig",
   event = { "BufReadPre", "BufNewFile" },
   dependencies = {
+    "williamboman/mason.nvim",
+    "williamboman/mason-lspconfig.nvim",
     "hrsh7th/cmp-nvim-lsp",
     { "antosha417/nvim-lsp-file-operations", config = true },
     { "folke/neodev.nvim", opts = {} },
@@ -85,6 +87,7 @@ return {
           capabilities = capabilities,
         })
       end,
+      ["lua_ls"] = function()
         -- configure lua server (with special settings)
         lspconfig["lua_ls"].setup({
           capabilities = capabilities,
@@ -100,6 +103,7 @@ return {
             },
           },
         })
+      end,
     })
   end,
 }
